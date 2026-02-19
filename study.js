@@ -7,16 +7,43 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-const waitThreeSeconds = () => new Promise((reject) => setTimeout(() => reject(500), 3000));
-const showMoney = () => __awaiter(this, void 0, void 0, function* () {
+// サンプルデータ
+const investmentlist = [{
+        name: "A",
+        value: 100,
+        risklevel: "low"
+    },
+    {
+        name: "B",
+        value: 200,
+        risklevel: "medium"
+    },
+    {
+        name: "C",
+        value: 300,
+        risklevel: "high"
+    }];
+// 非同期取得のシミュレート
+const getTasks = () => __awaiter(this, void 0, void 0, function* () {
+    console.log("サーバーから取得中…");
+    yield new Promise((resolve) => setTimeout(resolve, 2000));
+    return investmentlist;
+});
+// データを画面に表示
+const displayTasks = () => __awaiter(this, void 0, void 0, function* () {
     try {
-        console.log("銀行の残高を確認中…");
-        const data = yield waitThreeSeconds();
-        console.log(`現在の所持金は${data}円です`);
+        const tasks = yield getTasks();
+        console.log("---現在の投資タスク一覧---");
+        tasks.forEach((task) => {
+            console.log(`[${task.risklevel}] ${task.name}: ${task.value}円`);
+        });
     }
     catch (error) {
-        console.log("銀行のシステムがメンテナンス中です…");
+        console.error("データの取得に失敗しました…", error);
     }
-    ;
 });
-showMoney();
+// 実行！
+displayTasks();
+const numberBox = {
+    content: 100
+};
