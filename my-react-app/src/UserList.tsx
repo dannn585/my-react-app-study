@@ -45,7 +45,7 @@ function UserList(){
             {/* ここで users を map して表示する */}
             {users.map((user: any) => (
                 <li key ={user.id} 
-                className = "bg-white p-4 rounded-lg shadow-md font-bold text-gray-800 hover:text-blue-600 hover:shadow-xl">
+                className = "bg-white p-4 rounded-lg shadow-md font-bold text-gray-800 hover:text-blue-600 hover:shadow-xl w-full md:w-1/2">
                     {user.name}
                 </li>
             ))}
