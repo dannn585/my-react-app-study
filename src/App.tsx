@@ -14,7 +14,7 @@ function App() {
       <div className = "min-h-screen bg-gray-50">
         {/* ページ全体の背景を薄いグレーに */}
         <Header />
-        <main>
+        <main className = "pt-8">
           <a href="https://vite.dev" target="_blank">
             <img src={viteLogo} className="logo" alt="Vite logo" />
           </a>
